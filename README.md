@@ -2,7 +2,7 @@
 
 Instructions: https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/helm-chart.md
 
-## HowTO
+## How TO
 
 - Create a local kind cluster: `curl -s -L "https://raw.githubusercontent.com/snowdrop/k8s-infra/main/kind/kind.sh" | bash -s install --delete-kind-cluster`
 - Add the Helm repositories
