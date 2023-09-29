@@ -4,7 +4,7 @@ Instructions: https://github.com/janus-idp/backstage-showcase/blob/main/showcase
 
 ## HowTO
 
-- Create a local kind cluster
+- Create a local kind cluster: `curl -s -L "https://raw.githubusercontent.com/snowdrop/k8s-infra/main/kind/kind.sh" | bash -s install --delete-kind-cluster`
 - Add the Helm repositories
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
