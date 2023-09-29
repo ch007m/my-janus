@@ -17,7 +17,7 @@ git clone https://github.com/janus-idp/backstage-showcase; cd backstage-showcase
 docker build -t quay.io/ch007m/janus-idp:latest . -f docker/Dockerfile
 docker push quay.io/ch007m/janus-idp:latest
 ```
-- Create a values.yml file
+- Create a values.yml file to override helm's default values
 ```bash
 cat <<EOF > backstage-values.yml
 backstage:
@@ -32,12 +32,53 @@ backstage:
       value: 'http://{{ .Values.ingress.host }}:7007'
     - name: 'APP_CONFIG_backend_cors_origin'
       value: 'http://{{ .Values.ingress.host }}:7007'
-
+  #args:
+  #  - '--config'
+  #  - '/app/app-config.yaml'
+  extraAppConfig:
+    - filename: app-config.yaml
+      configMapRef: app-config
 ingress:
   enabled: true
   host: idp.127.0.0.1.nip.io
 EOF
 ```
+- Create also your backstage `app-config.yaml` file
+```bash
+cat <<EOF > $(pwd)/app-config.yaml
+backend:
+  auth:
+    keys:
+      - secret: temp
+  database:
+    client: better-sqlite3
+    connection: ':memory:'
+
+techdocs:
+  builder: 'local' # Alternatives - 'external'
+  generator:
+    runIn: 'local' # Alternatives - 'local'
+  publisher:
+    type: 'local'
+        
+integrations:
+  bitbucketServer:
+    - host: bitbucket.com
+      apiBaseUrl: temp
+      username: temp
+      password: temp
+EOF
+```
+- And deploy it as ConfigMap
+```bash
+kubectl delete configmap app-config -n idp
+kubectl create configmap app-config -n idp \
+  --from-file=app-config.yaml=$(pwd)/app-config.yaml
+  
+kubectl rollout restart deployment/janus-idp-backstage -n idp
+
+```
+
 - Deploy the helm chart
 ```bash
 helm upgrade -i janus-idp backstage/backstage \
@@ -48,5 +89,5 @@ helm upgrade -i janus-idp backstage/backstage \
 
 To remove it
 ```bash
-helm uninstall my-janus -n idp
+helm uninstall janus-idp -n idp
 ```

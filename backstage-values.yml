@@ -10,6 +10,12 @@ backstage:
       value: 'http://{{ .Values.ingress.host }}:7007'
     - name: 'APP_CONFIG_backend_cors_origin'
       value: 'http://{{ .Values.ingress.host }}:7007'
+  #args:
+  #  - '--config'
+  #  - '/app/app-config.yaml'
+  extraAppConfig:
+    - filename: app-config.yaml
+      configMapRef: app-config
 
 ingress:
   enabled: true
