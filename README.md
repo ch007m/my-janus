@@ -60,7 +60,28 @@ techdocs:
     runIn: 'local' # Alternatives - 'local'
   publisher:
     type: 'local'
-        
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://kubernetes.default.svc
+          name: kind
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          serviceAccountToken: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+#auth:
+#  environment: development
+#  providers:
+#    github:
+#      development:
+#        clientId: temp
+#        clientSecret: temp
+
 integrations:
   bitbucketServer:
     - host: bitbucket.com
