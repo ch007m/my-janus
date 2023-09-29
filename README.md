@@ -2,6 +2,11 @@
 
 Instructions: https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/helm-chart.md
 
+## Prereq
+
+- Install Nodejs, npm, yarn and backstage cli `npm install -g @backstage/cli`
+- Create a GitHub App using `backstage-cli create-github-app` - [see](https://github.com/organizations/ch007m/settings/apps/backstage-janus-idp)
+
 ## How To
 
 - Create a local kind cluster: `curl -s -L "https://raw.githubusercontent.com/snowdrop/k8s-infra/main/kind/kind.sh" | bash -s install --delete-kind-cluster`
