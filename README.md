@@ -74,13 +74,17 @@ kubernetes:
           skipMetricsLookup: true
           serviceAccountToken: /var/run/secrets/kubernetes.io/serviceaccount/token
 
-#auth:
-#  environment: development
-#  providers:
-#    github:
-#      development:
-#        clientId: temp
-#        clientSecret: temp
+catalog:
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+    - allow: [Component, System, Group, Resource, Location, Template, API]
+  locations:
+    - type: url
+      target: https://github.com/janus-idp/backstage-showcase/blob/main/catalog-entities/all.yaml
+    - type: url
+      target: https://github.com/janus-idp/software-templates/blob/main/showcase-templates.yaml
 
 integrations:
   bitbucketServer:
