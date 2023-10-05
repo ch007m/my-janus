@@ -1,0 +1,22 @@
+auth:
+  createAdminUser: true
+  adminUser: admin
+  adminPassword: admin
+  managementUser: manager
+  managementPassword: manager
+proxy: edge # Needed to avoid https -> http redirect
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/issuer: ca-issuer
+  hostname: keycloak-ui.127.0.0.1.nip.io
+  ingressClassName: nginx
+  tls: true
+  extraTls:
+    - hosts:
+        - keycloak-ui.127.0.0.1.nip.io
+postgresql:
+  enabled: true
+  auth:
+    username: admin
+    password: admin

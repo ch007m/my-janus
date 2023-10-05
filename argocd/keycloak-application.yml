@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: keycloak
   namespace: argocd
 spec:
   syncPolicy:
@@ -12,14 +12,14 @@ spec:
   destination:
     # cluster API URL
     server: https://kubernetes.default.svc
-    namespace: cert-manager
+    namespace: keycloak
   sources:
-    - repoURL: 'https://charts.jetstack.io'
-      chart: cert-manager
-      targetRevision: v1.13.1
+    - repoURL: 'https://charts.bitnami.com/bitnami'
+      chart: keycloak
+      targetRevision: 22.0.4
       helm:
         valueFiles:
-        - $values/charts/cert-manager/values.yml
+          - $values/charts/keycloak/values.yml
     - repoURL: 'https://github.com/ch007m/my-janus.git'
       targetRevision: main
       ref: values
