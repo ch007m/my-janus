@@ -6,6 +6,8 @@ Instructions: https://github.com/janus-idp/backstage-showcase/blob/main/showcase
 
 - Install Nodejs, npm, yarn and backstage cli `npm install -g @backstage/cli`
 - Create a GitHub App using `backstage-cli create-github-app` - [see](https://github.com/organizations/ch007m/settings/apps/backstage-janus-idp)
+- Install smee: `npm install --global smee-client`
+- 
 
 ## How To
 
