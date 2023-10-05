@@ -16,7 +16,7 @@ spec:
   sources:
     - repoURL: 'https://charts.bitnami.com/bitnami'
       chart: keycloak
-      targetRevision: 22.0.4
+      targetRevision: 17.0.1
       helm:
         valueFiles:
           - $values/charts/keycloak/values.yml
