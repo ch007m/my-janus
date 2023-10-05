@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: config-cert-manager
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated: {}
+  project: default
+  destination:
+    # cluster API URL
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  sources:
+    - repoURL: https://github.com/ch007m/my-janus.git
+      targetRevision: main
+      path: cert-manager/

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+  project: default
+  destination:
+    # cluster API URL
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  sources:
+    - repoURL: 'https://charts.jetstack.io'
+      chart: cert-manager
+      targetRevision: v1.13.1
+      helm:
+        valueFiles:
+        - $values/chart/values.yaml
+    - repoURL: 'https://github.com/ch007m/my-janus.git'
+      targetRevision: main
+      ref: values
