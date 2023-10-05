@@ -19,7 +19,7 @@ spec:
       targetRevision: v1.13.1
       helm:
         valueFiles:
-        - $values/chart/values.yaml
+        - $values/cert-manager/chart/values.yml
     - repoURL: 'https://github.com/ch007m/my-janus.git'
       targetRevision: main
       ref: values
