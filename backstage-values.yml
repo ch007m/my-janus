@@ -16,7 +16,6 @@ backstage:
   extraAppConfig:
     - filename: app-config.yaml
       configMapRef: app-config
-
 ingress:
   enabled: true
   host: idp.127.0.0.1.nip.io

@@ -21,7 +21,7 @@ spec:
       targetRevision: 2.6.0
       helm:
         valueFiles:
-          - $values/local-kind/helm-values/janus-idp.yml
+        - $values/local-kind/helm-values/janus-idp.yml
     - repoURL: 'https://github.com/ch007m/my-janus.git'
       targetRevision: main
       ref: values
