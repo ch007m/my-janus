@@ -46,11 +46,12 @@ spec:
         #  route:
         #    enabled: false
         valueFiles:
-        - https://raw.githubusercontent.com/ch007m/my-janus/08386d289b827392cbe3ad75758e0fe599cd72e0/local/values/janus-idp.yml
-        #- $values/local/values/janus-idp2.yml
-    #- repoURL: 'https://github.com/ch007m/my-janus.git'
-    #  targetRevision: main
-    #  ref: values
+        # That works: We can pass an URL pointing to the values file directly
+        #- https://raw.githubusercontent.com/ch007m/my-janus/main/local/values/janus-idp.yml
+        - $values/local/values/janus-idp.yml
+    - repoURL: 'https://github.com/ch007m/my-janus.git'
+      targetRevision: main
+      ref: values
     - repoURL: 'https://github.com/ch007m/my-janus.git'
       targetRevision: main
       path: charts/janus-idp
