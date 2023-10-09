@@ -4,4 +4,4 @@ metadata:
   name: app-config
 data:
   app-config.yaml : |
-  {{ .Values.configmap | indent 4 }}
+  {{ .Values.configmap | indent 2 }}
