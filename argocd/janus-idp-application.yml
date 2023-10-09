@@ -19,9 +19,12 @@ spec:
     - repoURL: 'https://janus-idp.github.io/helm-backstage'
       chart: backstage
       targetRevision: 2.6.0
+      #repoURL: 'https://github.com/janus-idp/helm-backstage.git'
+      #targetRevision: backstage-2.6.0
+      #path: charts/backstage
       helm:
         valueFiles:
-        - $values/local/helm-values/janus-idp.yml
+        - $values/local/values/janus-idp.yml
     - repoURL: 'https://github.com/ch007m/my-janus.git'
       targetRevision: main
       ref: values
