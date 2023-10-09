@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: janus-idp
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     automated: {}
