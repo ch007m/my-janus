@@ -1,24 +1,21 @@
-backstage:
-  image:
-    registry: quay.io/ch007m
-    repository: janus-idp
-    tag: latest
-  extraEnvVars:
-    - name: 'APP_CONFIG_app_baseUrl'
-      value: 'http://{{ .Values.ingress.host }}:7007'
-    - name: 'APP_CONFIG_backend_baseUrl'
-      value: 'http://{{ .Values.ingress.host }}:7007'
-    - name: 'APP_CONFIG_backend_cors_origin'
-      value: 'http://{{ .Values.ingress.host }}:7007'
-  #args:
-  #  - '--config'
-  #  - '/app/app-config.yaml'
-  extraAppConfig:
-    - filename: app-config.yaml
-      configMapRef: app-config
-ingress:
-  enabled: true
-  host: idp.127.0.0.1.nip.io
-
+upstream:
+  backstage:
+    image:
+      registry: quay.io/ch007m
+      repository: janus-idp
+      tag: latest
+    extraEnvVars:
+      - name: 'APP_CONFIG_app_baseUrl'
+        value: 'http://{{ .Values.ingress.host }}:7007'
+      - name: 'APP_CONFIG_backend_baseUrl'
+        value: 'http://{{ .Values.ingress.host }}:7007'
+      - name: 'APP_CONFIG_backend_cors_origin'
+        value: 'http://{{ .Values.ingress.host }}:7007'
+    extraAppConfig:
+      - filename: app-config.yaml
+        configMapRef: app-config
+  ingress:
+    enabled: true
+    host: idp.127.0.0.1.nip.io
 route:
   enabled: false
