@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: janus-idp
   namespace: argocd
 spec:
   syncPolicy:
@@ -14,8 +14,8 @@ spec:
     server: https://kubernetes.default.svc
     namespace: idp
   sources:
-    - repoURL: 'hhttps://janus-idp.github.io/helm-backstage'
-      chart: backstage/backstage
+    - repoURL: 'https://janus-idp.github.io/helm-backstage'
+      chart: backstage
       targetRevision: 2.6.0
       helm:
         valueFiles:
@@ -23,3 +23,6 @@ spec:
     - repoURL: 'https://github.com/ch007m/my-janus.git'
       targetRevision: main
       ref: values
+    - repoURL: https://github.com/ch007m/my-janus.git
+      targetRevision: main
+      path: charts/janus-idp
