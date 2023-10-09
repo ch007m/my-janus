@@ -1,4 +1,4 @@
-appConfig:
+applicationConfig:
   backend:
     auth:
       keys:
