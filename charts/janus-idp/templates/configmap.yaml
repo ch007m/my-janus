@@ -4,4 +4,4 @@ metadata:
   name: app-config
 data:
   app-config.yaml : |
-  {{ .Values.configmap | indent 2 }}
+  {{- include "common.tplvalues.render" ( dict "value" .Values.appConfig "context" $) | nindent 4 }}

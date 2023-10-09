@@ -1,4 +1,4 @@
-configmap:
+appConfig:
   backend:
     auth:
       keys:
