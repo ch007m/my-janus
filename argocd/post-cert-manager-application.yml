@@ -14,4 +14,4 @@ spec:
   sources:
     - repoURL: https://github.com/ch007m/my-janus.git
       targetRevision: main
-      path: cert-manager/
+      path: resources/cert-manager
