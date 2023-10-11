@@ -21,7 +21,7 @@ spec:
       targetRevision: 17.0.1
       helm:
         valueFiles:
-          - $values/local-kind/helm-values/keycloak.yml
+          - $values/local/values/keycloak.yml
     - repoURL: 'https://github.com/ch007m/my-janus.git'
       targetRevision: main
       ref: values
