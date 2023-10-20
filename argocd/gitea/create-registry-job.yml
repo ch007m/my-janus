@@ -15,8 +15,16 @@ spec:
       containers:
         - name: git-create-repo-job
           image: alpine
+          env:
+            - name: GIT_SERVICE
+              value: "gitea-http.gitea.svc.cluster.local"
+            - name: GIT_USERNAME
+              value: "gitea_admin"
+            - name: GIT_PASSWORD
+              value: "gitea_admin"
           command:
             - /bin/sh
             - -c
             - |
               echo "This is the post gitea job"
+              curl -v -u "$GIT_USERNAME:$GIT_PASSWORD" -H 'accept: application/json' "http://$GIT_SERVICE/api/v1/user/orgs"
