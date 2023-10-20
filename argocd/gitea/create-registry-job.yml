@@ -20,6 +20,8 @@ spec:
           env:
             - name: GIT_SERVICE
               value: "gitea-http.gitea.svc.cluster.local"
+            - name: GIT_SERVICE_PORT
+              value: "3000"
             - name: GIT_USERNAME
               value: "gitea_admin"
             - name: GIT_PASSWORD
@@ -29,4 +31,4 @@ spec:
             - -c
             - |
               echo "This is the post gitea job"
-              curl -v -u "$GIT_USERNAME:$GIT_PASSWORD" -H 'accept: application/json' "http://$GIT_SERVICE/api/v1/user/orgs"
+              curl -v -u "$GIT_USERNAME:$GIT_PASSWORD" -H 'accept: application/json' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/orgs"
