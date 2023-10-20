@@ -45,7 +45,8 @@ spec:
                 ADAPTER: memory
               queue:
                 TYPE: level
-          nodeSelector: "kubernetes.io/hostname=local-control-plane"
+          nodeSelector:
+            - "kubernetes.io/hostname=local-control-plane"
           service:
             ssh:
               type: NodePort
