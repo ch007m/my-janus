@@ -5,6 +5,8 @@ metadata:
   namespace: janus-idp
 data:
   app-config.yaml: |-
+    organization:
+      name: "Janus IDP"
     backend:
       auth:
         keys:
@@ -39,6 +41,10 @@ data:
       locations:
         - type: url
           target: https://github.com/janus-idp/backstage-showcase/blob/main/catalog-entities/all.yaml
+          rules:
+            - allow: [Template]
         - type: url
           target: https://github.com/janus-idp/software-templates/blob/main/showcase-templates.yaml
+          rules:
+            - allow: [Template]
     integrations:
