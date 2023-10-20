@@ -31,7 +31,7 @@ spec:
             - /bin/sh
             - -c
             - |
-              curl -X 'POST' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/repos"- \
+              curl -X 'POST' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/repos" \
                 -u "$GIT_USERNAME:$GIT_PASSWORD"  \
                 -H 'Content-Type: application/json' \
                 -d '{
@@ -42,7 +42,7 @@ spec:
                    "readme": "Janus IDP software-templates"
                  }'
               
-              curl -X 'POST' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/repos"- \
+              curl -X 'POST' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/repos" \
                 -u "$GIT_USERNAME:$GIT_PASSWORD"  \
                 -H 'Content-Type: application/json' \
                 -d '{
