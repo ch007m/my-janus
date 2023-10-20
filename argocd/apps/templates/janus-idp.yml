@@ -28,11 +28,11 @@ spec:
               tag: latest
             extraEnvVars:
               - name: 'APP_CONFIG_app_baseUrl'
-                value: 'http://{{ .Values.ingress.host }}:844"'
+                value: 'https://janus-idp.localtest.me:8443'
               - name: 'APP_CONFIG_backend_baseUrl'
-                value: 'http://{{ .Values.ingress.host }}:8443'
+                value: 'https://janus-idp.localtest.me:8443'
               - name: 'APP_CONFIG_backend_cors_origin'
-                value: 'http://{{ .Values.ingress.host }}:8443'
+                value: 'https://janus-idp.localtest.me:8443'
             extraAppConfig:
               - filename: app-config.yaml
                 configMapRef: app-config
