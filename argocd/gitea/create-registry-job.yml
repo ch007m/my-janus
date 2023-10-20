@@ -9,6 +9,7 @@ metadata:
 spec:
   parallelism: 1
   completions: 1
+  backoffLimit: 3
   template:
     metadata:
       name: git-create-repo-job
@@ -30,5 +31,24 @@ spec:
             - /bin/sh
             - -c
             - |
-              echo "This is the post gitea job"
-              curl -v -u "$GIT_USERNAME:$GIT_PASSWORD" -H 'accept: application/json' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/orgs"
+              curl -X 'POST' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/repos"- \
+                -u "$GIT_USERNAME:$GIT_PASSWORD"  \
+                -H 'Content-Type: application/json' \
+                -d '{
+                   "default_branch": "main",
+                   "description": "software-templates",
+                   "name": "software-templates",
+                   "private": false,
+                   "readme": "Janus IDP software-templates"
+                 }'
+              
+              curl -X 'POST' "http://$GIT_SERVICE:$GIT_SERVICE_PORT/api/v1/user/repos"- \
+                -u "$GIT_USERNAME:$GIT_PASSWORD"  \
+                -H 'Content-Type: application/json' \
+                -d '{
+                    "default_branch": "main",
+                    "description": "backstage-catalog-entities",
+                    "name": "backstage-catalog-entities",
+                    "private": false,
+                    "readme": "Janus IDP catalog entities"
+                  }'
