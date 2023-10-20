@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: idp-bootstrap
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     automated: {}
