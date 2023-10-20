@@ -16,7 +16,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: git-create-repo-job
-          image: alpine
+          image: curlimages/curl
           env:
             - name: GIT_SERVICE
               value: "gitea-http.gitea.svc.cluster.local"
