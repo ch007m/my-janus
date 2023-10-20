@@ -11,7 +11,7 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: keycloak
+    namespace: vault
   sources:
     - repoURL: 'https://helm.releases.hashicorp.com'
       chart: vault
