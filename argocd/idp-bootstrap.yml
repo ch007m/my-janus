@@ -4,6 +4,8 @@ metadata:
   name: idp-bootstrap
   namespace: argocd
 spec:
+  syncPolicy:
+    automated: {}
   project: default
   source:
     repoURL: https://github.com/ch007m/my-janus.git
