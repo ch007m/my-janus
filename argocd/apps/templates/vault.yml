@@ -10,7 +10,7 @@ spec:
     automated: {}
     syncOptions:
       - CreateNamespace=true
-  project: default
+  project: {{ .Values.spec.project.name }}
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: vault

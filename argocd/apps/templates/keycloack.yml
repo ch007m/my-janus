@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keycloak
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+  project: {{ .Values.spec.project.name }}
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: keycloak
+  sources:
+    - repoURL: 'https://charts.bitnami.com/bitnami'
+      chart: keycloak
+      targetRevision: 17.0.1
+      helm:
+        valueObject:
+          auth:
+            createAdminUser: true
+            adminUser: admin
+            adminPassword: admin
+            managementUser: manager
+            managementPassword: manager
+          proxy: edge # Needed to avoid https -> http redirect
+          ingress:
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: selfsigned
+            hostname: keycloak.localtest.me
+            ingressClassName: nginx
+            tls: true
+          postgresql:
+            enabled: true
+            auth:
+              username: admin
+              password: admin

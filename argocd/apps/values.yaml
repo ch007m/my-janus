@@ -4,3 +4,5 @@ spec:
   source:
     repoURL: https://github.com/ch007m/my-janus.git
     targetRevision: HEAD
+  project:
+    name: default
