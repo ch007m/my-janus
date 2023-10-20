@@ -19,25 +19,25 @@ spec:
       chart: backstage
       targetRevision: 2.6.0
       helm:
-      valuesObject:
-        upstream:
-          backstage:
-            image:
-              registry: quay.io/ch007m
-              repository: janus-idp
-              tag: latest
-            extraEnvVars:
-              - name: 'APP_CONFIG_app_baseUrl'
-                value: 'https://janus-idp.localtest.me:8443'
-              - name: 'APP_CONFIG_backend_baseUrl'
-                value: 'https://janus-idp.localtest.me:8443'
-              - name: 'APP_CONFIG_backend_cors_origin'
-                value: 'https://janus-idp.localtest.me:8443'
-            extraAppConfig:
-              - filename: app-config.yaml
-                configMapRef: app-config
-          ingress:
-            enabled: true
-            host: janus-idp.localtest.me
-        route:
-          enabled: false
+        valuesObject:
+          upstream:
+            backstage:
+              image:
+                registry: quay.io/ch007m
+                repository: janus-idp
+                tag: latest
+              extraEnvVars:
+                - name: 'APP_CONFIG_app_baseUrl'
+                  value: 'https://janus-idp.localtest.me:8443'
+                - name: 'APP_CONFIG_backend_baseUrl'
+                  value: 'https://janus-idp.localtest.me:8443'
+                - name: 'APP_CONFIG_backend_cors_origin'
+                  value: 'https://janus-idp.localtest.me:8443'
+              extraAppConfig:
+                - filename: app-config.yaml
+                  configMapRef: app-config
+            ingress:
+              enabled: true
+              host: janus-idp.localtest.me
+          route:
+            enabled: false
