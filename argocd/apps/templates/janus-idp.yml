@@ -15,6 +15,9 @@ spec:
     server: {{ .Values.spec.destination.server }}
     namespace: janus-idp
   sources:
+    - repoURL: https://github.com/ch007m/my-janus.git
+      targetRevision: main
+      path: argocd/janus-idp
     - repoURL: 'https://janus-idp.github.io/helm-backstage'
       chart: backstage
       targetRevision: 2.6.0
