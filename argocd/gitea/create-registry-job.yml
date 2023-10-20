@@ -13,6 +13,7 @@ spec:
     metadata:
       name: git-create-repo-job
     spec:
+      restartPolicy: Never
       containers:
         - name: git-create-repo-job
           image: alpine
