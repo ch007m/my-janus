@@ -7,17 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/ch007m/my-janus.git
-    path: argocd
-    directory:
-      recurse: true
+    path: argocd/apps
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-    syncOptions:
-      - CreateNamespace=false
-      - FailOnSharedResource=true

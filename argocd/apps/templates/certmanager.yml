@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: cert-manager
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
     automated: {}
@@ -11,7 +13,7 @@ spec:
   project: default
   destination:
     # cluster API URL
-    server: https://kubernetes.default.svc
+    server: {{ .Values.spec.destination.server }}
     namespace: cert-manager
   sources:
     - repoURL: 'https://charts.jetstack.io'
@@ -25,6 +27,6 @@ spec:
     #- repoURL: 'https://github.com/ch007m/my-janus.git'
     #  targetRevision: main
     #  ref: values
-    #- repoURL: https://github.com/ch007m/my-janus.git
-    #  targetRevision: main
-    #  path: resources/cert-manager
+    - repoURL: https://github.com/ch007m/my-janus.git
+      targetRevision: main
+      path: argocd/cert-manager
