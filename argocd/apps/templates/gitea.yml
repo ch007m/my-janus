@@ -46,7 +46,8 @@ spec:
               queue:
                 TYPE: level
           nodeSelector:
-            "kubernetes.io/hostname": "local-control-plane"
+            #"kubernetes.io/hostname": "local-control-plane"
+            ingress-ready: "true"
           service:
             ssh:
               type: NodePort
