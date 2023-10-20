@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: git-create-repo-job
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      name: git-create-repo-job
+    spec:
+      containers:
+        - name: git-create-repo-job
+          image: alpine
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "This is the post gitea job"

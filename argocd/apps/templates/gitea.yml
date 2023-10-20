@@ -15,6 +15,9 @@ spec:
     server: {{ .Values.spec.destination.server }}
     namespace: gitea
   sources:
+    - repoURL: https://github.com/ch007m/my-janus.git
+      targetRevision: main
+      path: argocd/gitea
     - repoURL: 'https://dl.gitea.com/charts/'
       chart: gitea
       targetRevision: 9.5.1
