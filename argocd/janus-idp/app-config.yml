@@ -48,3 +48,7 @@ data:
           rules:
             - allow: [Template]
     integrations:
+      gitea:
+      - host: gitea.example.com
+        username: "gitea_admin"
+        password: "gitea_admin"
