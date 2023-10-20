@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vault
+  sources:
+    - repoURL: 'https://helm.releases.hashicorp.com'
+      chart: vault
+      targetRevision: 0.24.1
+      helm:
+        valuesObject:
+          server:
+            image:
+              tag: 1.13.0
+            updateStrategyType: RollingUpdate
+            ha:
+              enabled: false
+            ingress:
+              enabled: true
+              ingressClassName: nginx
+              hosts:
+                - host: vault.cnoe.localtest.me
+                  paths: []
+          ui:
+            enabled: true
+            serviceType: "ClusterIP"
+
