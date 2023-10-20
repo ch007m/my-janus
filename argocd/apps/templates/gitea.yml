@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+  project: default
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: gitea
+  sources:
+    - repoURL: 'https://dl.gitea.com/charts/'
+      chart: gitea
+      targetRevision: 9.5.1
+      helm:
+        valuesObject:
+          redis-cluster:
+            enabled: false
+          postgresql:
+            enabled: false
+          postgresql-ha:
+            enabled: false
+          persistence:
+            enabled: false
+          gitea:
+            admin:
+              username: "gitea_admin"
+              password: "gitea_admin"
+              email: "gi@tea.com"
+            config:
+              database:
+                DB_TYPE: sqlite3
+              session:
+                PROVIDER: memory
+              cache:
+                ADAPTER: memory
+              queue:
+                TYPE: level
+          service:
+            ssh:
+              type: NodePort
+              nodePort: 32222
+              externalTrafficPolicy: Local
+          ingress:
+            enabled: true
+            className: nginx
+            hosts:
+              - host: gitea.localtest.me
+                paths:
+                  - path: /
+                    pathType: Prefix
+

@@ -1,29 +1,47 @@
 ## How to use Janus IDP
 
-Instructions: https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/helm-chart.md
+Instructions to only install janus backstage on a cluster without the components: https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/helm-chart.md
 
-## Prereq
+## Prerequisite
 
 - Install Nodejs, npm, yarn and backstage cli `npm install -g @backstage/cli`
 - Create a GitHub App using `backstage-cli create-github-app` - [see](https://github.com/organizations/ch007m/settings/apps/backstage-janus-idp)
-- Install smee: `npm install --global smee-client`
-- 
+- Install smee: `npm install --global smee-client` (optional)
 
-## How To
+## How To build and deploy Janus
 
-- Create a local kind cluster: `curl -s -L "https://raw.githubusercontent.com/snowdrop/k8s-infra/main/kind/kind.sh" | bash -s install --delete-kind-cluster`
-- Add the Helm repositories
-```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo add backstage https://backstage.github.io/charts
-helm repo add janus-idp https://janus-idp.github.io/helm-backstage
-```
 - Build the image of the showcase project: https://github.com/janus-idp/backstage-showcase
 ```bash
 git clone https://github.com/janus-idp/backstage-showcase; cd backstage-showcase
 docker build -t quay.io/ch007m/janus-idp:latest . -f docker/Dockerfile
 docker push quay.io/ch007m/janus-idp:latest
 ```
+- Build locally the IDPBuilder or use the executable when it will be released
+```bash
+git clone https://github.com/cnoe-io/idpbuilder.git; cd ipdbuilder
+make
+./idpbuilder create --buildName local --recreate
+```
+- Wait till the ArgoCD applications are sync/health and ingress controller up and running
+```bash
+kubectl get apps -A
+NAMESPACE   NAME                                       SYNC STATUS   HEALTH STATUS
+argocd      idpbuilder-local-gitserver-argocd          Synced        Healthy
+argocd      idpbuilder-local-gitserver-backstage       Synced        Healthy
+argocd      idpbuilder-local-gitserver-crossplane      Synced        Healthy
+argocd      idpbuilder-local-gitserver-nginx-ingress   Synced        Healthy
+
+kubectl rollout status deployment/ingress-nginx-controller -n ingress-nginx
+deployment "ingress-nginx-controller" successfully rolled out
+```
+- Deploy the needed ArgoCD components: gitea, certmanager, vault
+```bash
+kubectl apply -f ./argocd/idp-bootstrap.yml
+```
+
+
+## To be reviewed
+
 - Create a values.yml file to override helm's default values
 ```bash
 cat <<EOF > backstage-values.yml
@@ -101,6 +119,7 @@ integrations:
       password: temp
 EOF
 ```
+- Create a local kind cluster: `curl -s -L "https://raw.githubusercontent.com/snowdrop/k8s-infra/main/kind/kind.sh" | bash -s install --delete-kind-cluster`
 - And deploy it as ConfigMap
 ```bash
 kubectl delete configmap app-config -n idp
@@ -108,9 +127,7 @@ kubectl create configmap app-config -n idp \
   --from-file=app-config.yaml=$(pwd)/app-config.yaml
   
 kubectl rollout restart deployment/janus-idp-backstage -n idp
-
 ```
-
 - Deploy the helm chart
 ```bash
 helm upgrade -i janus-idp backstage/backstage \
@@ -123,3 +140,4 @@ To remove it
 ```bash
 helm uninstall janus-idp -n idp
 ```
+
