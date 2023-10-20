@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: idp-bootstrap
-  namespace: argocd
+  namespace: idp
 spec:
   project: idp-bootstrap
   source:
@@ -17,5 +17,5 @@ spec:
       selfHeal: true
       allowEmpty: true
     syncOptions:
-      - CreateNamespace=false
+      - CreateNamespace=true
       - FailOnSharedResource=true
