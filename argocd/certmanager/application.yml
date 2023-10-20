@@ -18,7 +18,7 @@ spec:
       chart: cert-manager
       targetRevision: v1.13.1
       helm:
-        valueObject:
+        valuesObject:
           installCRDs: true
         #valueFiles:
         #- $values/local/values/cert-manager.yml
