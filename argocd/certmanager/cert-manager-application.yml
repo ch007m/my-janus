@@ -18,11 +18,13 @@ spec:
       chart: cert-manager
       targetRevision: v1.13.1
       helm:
-        valueFiles:
-        - $values/local/values/cert-manager.yml
-    - repoURL: 'https://github.com/ch007m/my-janus.git'
-      targetRevision: main
-      ref: values
-    - repoURL: https://github.com/ch007m/my-janus.git
-      targetRevision: main
-      path: resources/cert-manager
+        valueObject:
+          installCRDs: true
+        #valueFiles:
+        #- $values/local/values/cert-manager.yml
+    #- repoURL: 'https://github.com/ch007m/my-janus.git'
+    #  targetRevision: main
+    #  ref: values
+    #- repoURL: https://github.com/ch007m/my-janus.git
+    #  targetRevision: main
+    #  path: resources/cert-manager
