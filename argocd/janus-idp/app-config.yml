@@ -4,13 +4,18 @@ metadata:
   name: app-config
   namespace: janus-idp
 data:
-  app-config.yaml: |-
+  app-config.yaml: |- 
     organization:
       name: "Janus IDP"
+    app:
+      baseUrl: 'https://janus-idp.localtest.me:8443' 
     backend:
       auth:
         keys:
           - secret: temp
+      baseUrl: 'https://janus-idp.localtest.me:8443'
+      cors:
+        origin: 'https://janus-idp.localtest.me:8443'
       database:
         client: better-sqlite3
         connection: ':memory:'
