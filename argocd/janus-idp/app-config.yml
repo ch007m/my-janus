@@ -44,7 +44,7 @@ data:
       import:
         entityFilename: catalog-info.yaml
       rules:
-        - allow: [Component, System, Group, Resource, Location, Template, API]
+      - allow: [Component, Domain, System, Group, Resource, Location, Template, API]
       locations:
       - type: url
         target: https://gitea.localtest.me:8443/gitea_admin/catalog-entities/raw/branch/main/catalog-entities/all.yaml
