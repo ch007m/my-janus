@@ -16,7 +16,7 @@ data:
         connection: ':memory:'
       reading:
         allow:
-          - host: gitea.localtest.me
+          - host: gitea.localtest.me:8443
     techdocs:
       builder: 'local' # Alternatives - 'external'
       generator:
