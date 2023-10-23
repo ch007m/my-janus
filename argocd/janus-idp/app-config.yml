@@ -40,11 +40,11 @@ data:
         - allow: [Component, System, Group, Resource, Location, Template, API]
       locations:
         - type: url
-          target: https://github.com/janus-idp/backstage-showcase/blob/main/catalog-entities/all.yaml
+          target: https://gitea.localtest.me:8443/software-templates/blob/main/catalog-entities/all.yaml
           rules:
             - allow: [Template]
         - type: url
-          target: https://github.com/janus-idp/software-templates/blob/main/showcase-templates.yaml
+          target: https://gitea.localtest.me:8443/catalog-entities/blob/main/showcase-templates.yaml
           rules:
             - allow: [Template]
     integrations:

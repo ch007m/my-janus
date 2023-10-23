@@ -47,8 +47,8 @@ spec:
                 -H 'Content-Type: application/json' \
                 -d '{
                     "default_branch": "main",
-                    "description": "backstage-catalog-entities",
-                    "name": "backstage-catalog-entities",
+                    "description": "catalog-entities",
+                    "name": "catalog-entities",
                     "private": false,
                     "readme": "Janus IDP catalog entities"
                   }'
