@@ -46,14 +46,14 @@ data:
       rules:
         - allow: [Component, System, Group, Resource, Location, Template, API]
       locations:
-        - type: url
-          target: https://gitea.localtest.me:8443/gitea_admin/catalog-entities/src/branch/main/catalog-entities/all.yaml
-          rules:
-            - allow: [Template]
-        - type: url
-          target: https://gitea.localtest.me:8443/gitea_admin/software-templates/src/branch/gitea/showcase-templates.yaml
-          rules:
-            - allow: [Template]
+      - type: url
+        target: https://gitea.localtest.me:8443/gitea_admin/catalog-entities/raw/branch/main/catalog-entities/all.yaml
+        rules:
+          - allow: [Template]
+      - type: url
+        target: https://gitea.localtest.me:8443/gitea_admin/software-templates/raw/branch/gitea/showcase-templates.yaml
+        rules:
+          - allow: [Template]
     integrations:
       gitea: 
       - host: gitea.localtest.me:8443 # gitea-http.gitea.svc.cluster.local:3000
