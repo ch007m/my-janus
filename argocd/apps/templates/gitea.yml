@@ -45,16 +45,6 @@ spec:
                 ADAPTER: memory
               queue:
                 TYPE: level
-          nodeSelector:
-            #"kubernetes.io/hostname": "local-control-plane"
-            ingress-ready: "true"
-          tolerations:
-            - effect: NoSchedule
-              key: node-role.kubernetes.io/master
-              operator: Equal
-            - effect: NoSchedule
-              key: node-role.kubernetes.io/control-plane
-              operator: Equal
           service:
             ssh:
               type: NodePort
