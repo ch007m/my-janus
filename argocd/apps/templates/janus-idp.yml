@@ -36,6 +36,8 @@ spec:
                   value: 'https://janus-idp.localtest.me:8443'
                 - name: 'APP_CONFIG_backend_cors_origin'
                   value: 'https://janus-idp.localtest.me:8443'
+                - name: 'NODE_TLS_REJECT_UNAUTHORIZED'
+                  value: "0"
               extraAppConfig:
                 - filename: app-config.yaml
                   configMapRef: app-config
