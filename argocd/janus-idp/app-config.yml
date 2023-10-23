@@ -35,7 +35,6 @@ data:
     catalog:
       import:
         entityFilename: catalog-info.yaml
-        pullRequestBranchName: backstage-integration
       rules:
         - allow: [Component, System, Group, Resource, Location, Template, API]
       locations:
@@ -48,7 +47,7 @@ data:
           rules:
             - allow: [Template]
     integrations:
-      gitea:
-      - host: gitea.example.com
+      gitea: 
+      - host: gitea.localtest.me:8443
         username: "gitea_admin"
         password: "gitea_admin"
