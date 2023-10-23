@@ -47,16 +47,16 @@ data:
       - allow: [Component, Domain, System, Group, Resource, Location, Template, API]
       locations:
       - type: url
-        target: https://gitea.localtest.me:8443/gitea_admin/catalog-entities/raw/branch/main/catalog-entities/all.yaml
+        target: http://gitea-http.gitea.svc.cluster.local:3000/gitea_admin/catalog-entities/raw/branch/main/catalog-entities/all.yaml #https://gitea.localtest.me:8443/gitea_admin/catalog-entities/raw/branch/main/catalog-entities/all.yaml
         rules:
           - allow: [Template]
       - type: url
-        target: https://gitea.localtest.me:8443/gitea_admin/software-templates/raw/branch/gitea/showcase-templates.yaml
+        target: http://gitea-http.gitea.svc.cluster.local:3000/gitea_admin/catalog-entities/raw/branch/gitea/showcase-templates.yaml #https://gitea.localtest.me:8443/gitea_admin/software-templates/raw/branch/gitea/showcase-templates.yaml
         rules:
           - allow: [Template]
     integrations:
       gitea: 
-      - host: gitea.localtest.me:8443 # gitea-http.gitea.svc.cluster.local:3000
-        baseUrl: "https://gitea.localtest.me:8443/"
+      - host: gitea-http.gitea.svc.cluster.local:3000 # gitea-http.gitea.svc.cluster.local:3000
+        baseUrl: "http://gitea-http.gitea.svc.cluster.local:3000"
         username: "gitea_admin"
         password: "gitea_admin"

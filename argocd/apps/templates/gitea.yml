@@ -46,7 +46,7 @@ spec:
               queue:
                 TYPE: level
               server:
-                ROOT_URL: https://gitea.localtest.me:8443
+                ROOT_URL: http://gitea-http.gitea.svc #https://gitea.localtest.me:8443
           service:
             ssh:
               type: NodePort
