@@ -16,7 +16,7 @@ data:
         connection: ':memory:'
       reading:
         allow:
-          - host: gitea-http.gitea.svc.cluster.local:3000
+          - host: '*.localtest.me:8443` # gitea-http.gitea.svc.cluster.local:3000
     techdocs:
       builder: 'local' # Alternatives - 'external'
       generator:
@@ -51,6 +51,6 @@ data:
             - allow: [Template]
     integrations:
       gitea: 
-      - host: gitea-http.gitea.svc.cluster.local:3000
+      - host: gitea.localtest.me:8443 # gitea-http.gitea.svc.cluster.local:3000
         username: "gitea_admin"
         password: "gitea_admin"
