@@ -57,5 +57,6 @@ data:
     integrations:
       gitea: 
       - host: gitea.localtest.me:8443 # gitea-http.gitea.svc.cluster.local:3000
+        baseUrl: "https://gitea.localtest.me:8443/"
         username: "gitea_admin"
         password: "gitea_admin"
