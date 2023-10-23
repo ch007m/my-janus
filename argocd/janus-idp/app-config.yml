@@ -51,7 +51,7 @@ data:
         rules:
           - allow: [Template]
       - type: url
-        target: http://gitea-http.gitea.svc.cluster.local:3000/gitea_admin/catalog-entities/raw/branch/gitea/showcase-templates.yaml #https://gitea.localtest.me:8443/gitea_admin/software-templates/raw/branch/gitea/showcase-templates.yaml
+        target: http://gitea-http.gitea.svc.cluster.local:3000/gitea_admin/software-templates/raw/branch/gitea/showcase-templates.yaml #https://gitea.localtest.me:8443/gitea_admin/software-templates/raw/branch/gitea/showcase-templates.yaml
         rules:
           - allow: [Template]
     integrations:
