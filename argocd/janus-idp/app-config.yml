@@ -43,6 +43,8 @@ data:
     catalog:
       providers:
         ocm:
+          default:
+            name: local-control-plane
           env:
             kubernetesPluginRef: local-control-plane # Must match the kubernetes cluster name
       import:
