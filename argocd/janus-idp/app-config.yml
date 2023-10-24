@@ -41,6 +41,10 @@ data:
               skipMetricsLookup: true
               serviceAccountToken: /var/run/secrets/kubernetes.io/serviceaccount/token
     catalog:
+      providers:
+        ocm:
+          env:
+            kubernetesPluginRef: kind # Must match the cluster name
       import:
         entityFilename: catalog-info.yaml
       rules:
