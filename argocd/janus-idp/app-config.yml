@@ -67,4 +67,4 @@ data:
     
     enabled:
       kubernetes: true
-      ocm: false
+      ocm: true
