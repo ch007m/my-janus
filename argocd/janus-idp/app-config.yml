@@ -35,7 +35,7 @@ data:
         - type: 'config'
           clusters:
             - url: https://kubernetes.default.svc
-              name: kind
+              name: local-control-plane # This is the kubernetes node's name
               authProvider: 'serviceAccount'
               skipTLSVerify: true
               skipMetricsLookup: true
@@ -44,7 +44,7 @@ data:
       providers:
         ocm:
           env:
-            kubernetesPluginRef: kind # Must match the cluster name
+            kubernetesPluginRef: local-control-plane # Must match the kubernetes cluster name
       import:
         entityFilename: catalog-info.yaml
       rules:
